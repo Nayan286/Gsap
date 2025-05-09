@@ -54,12 +54,17 @@ body {
 
 .page1 .nav .nav-logo {
     width: fit-content;
-    height: 1.25rem;
+    height: 1.3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
     overflow-y: hidden;
+}
+
+.page1 .nav .nav-logo a {
+    text-decoration: none;
+    color: #0e0e0e;
 }
 
 .page1 .nav .nav-logo h2 {
@@ -70,6 +75,7 @@ body {
     font-size: 1.25rem;
     letter-spacing: -0.5px;
     line-height: 1;
+    transition: transform ease-in-out 0.2s;
 }
 
 .page1 .nav .nav-anchor {
@@ -104,7 +110,7 @@ body {
 
 .page1 .nav .nav-button .sign-in {
     width: fit-content;
-    height: 1.2rem;
+    height: 1.3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -116,7 +122,7 @@ body {
     font-family: plex;
     letter-spacing: -0.5px;
     text-transform: uppercase;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 500;
     line-height: 1;
     display: inline-block;
@@ -351,6 +357,7 @@ body {
     padding-top: 12rem;
     min-height: 100vh;
     position: relative;
+    z-index: 9;
 }
 
 .page2 .anim-title {
@@ -856,6 +863,7 @@ body {
     width: fit-content;
     padding: 14px 100px;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .footer .footer-btn .btn-text {
@@ -863,7 +871,7 @@ body {
     height: 1.2rem;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: flex-end;
     flex-direction: column;
     overflow-y: hidden;
 }
@@ -954,7 +962,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    display: none;
 }
 
 .loader .loader-text {

@@ -1,4 +1,4 @@
-function locomotive() {
+function locomotiveScroll() {
     gsap.registerPlugin(ScrollTrigger);
 
     const locoScroll = new LocomotiveScroll({
@@ -19,15 +19,16 @@ function locomotive() {
     });
 
     ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+
     ScrollTrigger.refresh();
 
 }
 
-locomotive()
+locomotiveScroll()
 
-function loader() {
+function loaderAnimation() {
+
     let tl = gsap.timeline();
-
     tl.from(".g", {
         x: "-100%",
         opacity: 0,
@@ -58,352 +59,444 @@ function loader() {
 
     tl.to(".loader-text h2 span", {
         y: "100%",
-        duration: 0.5,
-        stagger: 0.05,
         opacity: 0,
-        ease: "back.out(1.7)"
+        stagger: 0.1,
+        duration: 0.4,
+        ease: "power2.out"
     })
 
     tl.to(".loader", {
         opacity: 0,
-        display: "none",
-        duration: 0.5,
-        ease: "power4.out"
+        display: "none"
     })
 
     tl.to(".page1 .hero-section .text-section .text .stag h1 .a", {
         y: "-100%",
-        duration: 0.6,
-        ease: "power2.out"
-    }, "auto")
+        duration: 0.5,
+        ease: "power2.out",
+        stagger: 0.02,
+    }, "trigger-same")
 
     tl.to(".page1 .hero-section .text-section .text .stag h1 .b", {
         y: "-100%",
-        duration: 0.6,
-        delay: 0.3,
-        ease: "power2.out"
-    }, "auto")
+        duration: 0.5,
+        ease: "power2.out",
+        stagger: 0.02,
+        delay: 0.2
+    }, "trigger-same")
 
     tl.to(".page1 .hero-section .text-section .text .stag h1 .c", {
         y: "-100%",
-        duration: 0.6,
-        delay: 0.6,
-        ease: "power2.out"
-    }, "auto")
-}
-
-loader()
-
-function videoanimation() {
-
-    gsap.set(".page1 .video-section .video", {
-        x: 0,
-        y: 0,
-        scale: 1
-    })
-    gsap.to(".page1 .video-section .video", {
-        y: 550,
-        x: -550,
-        scale: 0.25,
-        scrollTrigger: {
-            scroller: ".main",
-            trigger: ".page1 .video-section .video",
-            scrub: 2,
-            start: "top 60%",
-            end: "top 30%"
-        }
-    })
+        duration: 0.5,
+        ease: "power2.out",
+        stagger: 0.02,
+        delay: 0.4
+    }, "trigger-same")
 
 }
 
-videoanimation()
+loaderAnimation()
 
-function gsapanimation() {
+function someEventlistener() {
 
-    gsap.from(".page1 .video-section .video-content .video-text .para span", {
-        y: "100%",
-        duration: 0.5,
-        ease: "power2.out",
-        stagger: 0.1,
-        scrollTrigger: {
-            trigger: ".page1 .video-section .video-content .video-text .para",
-            scroller: ".main",
-            scrub: 2,
-            start: "top 150%",
-            end: "top 120%"
+    function webtitleToggle() {
+
+        let h2logo = document.querySelectorAll(".page1 .nav .nav-logo h2");
+        let navLogo = document.querySelector(".page1 .nav .nav-logo");
+
+        h2logo.forEach((logo) => {
+            navLogo.addEventListener("mouseenter", () => {
+                logo.style.transform = "translateY(100%)";
+            });
+
+            navLogo.addEventListener("mouseleave", () => {
+                logo.style.transform = "translateY(0%)";
+            });
+        });
+
+    }
+
+    webtitleToggle()
+
+    function navButtonToggle() {
+
+        function signinbutton() {
+
+            let signIn = document.querySelector(".page1 .nav .nav-button .sign-in");
+            let signInspan = document.querySelectorAll(".page1 .nav .nav-button .sign-in h2 span");
+
+            signInspan.forEach((spans) => {
+                signIn.addEventListener("mouseenter", () => {
+                    gsap.to(spans, {
+                        y: "200%",
+                        duration: 0.3,
+                        stagger: 0.1
+                    })
+                })
+
+                signIn.addEventListener("mouseleave", () => {
+                    gsap.to(spans, {
+                        y: "0%",
+                        duration: 0.3,
+                        stagger: 0.1
+                    })
+                })
+            })
         }
-    })
 
-    gsap.from(".bubble-section .appear-left", {
-        y: "100%",
-        stagger: 0.1,
-        duration: 0.5,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: ".bubble-section",
-            scroller: ".main",
-            scrub: 2,
-            start: "top 170%",
-            end: "top 140%"
-        }
-    })
+        signinbutton()
 
-    gsap.from(".bubble-section .appear-right", {
-        y: "100%",
-        stagger: -0.1,
-        duration: 0.5,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: ".bubble-section",
-            scroller: ".main",
-            scrub: 2,
-            start: "top 170%",
-            end: "top 140%"
-        }
-    })
+        function signUpbutton() {
 
-    gsap.from(".page2 .anim-title .h2 .anime .first", {
-        y: "100%",
-        duration: 0.5,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: ".page2 .anim-title",
-            scroller: ".main",
-            scrub: 2,
-            start: "top 170%",
-            end: "top 140%"
-        }
-    })
+            let signUp = document.querySelector(".page1 .nav .nav-button button");
+            let signUpspan = document.querySelectorAll(".page1 .nav .nav-button button .courses h2 span");
 
-    gsap.from(".page2 .anim-title .h2 .anime .second", {
-        y: "100%",
-        duration: 0.5,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: ".page2 .anim-title",
-            scroller: ".main",
-            scrub: 2,
-            start: "top 150%",
-            end: "top 120%"
-        }
-    })
+            signUp.addEventListener("mouseenter", () => {
+                gsap.to(signUpspan, {
+                    y: "180%",
+                    duration: 0.3
+                })
+            })
 
-    gsap.from(".page2 .anime-cards .card", {
-        y: "200%",
-        duration: 2.5,
-        stagger: -0.3,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-            trigger: ".page2 .anime-cards",
-            scroller: ".main",
-            start: "top 160%",
-            end: "top 120%",
-            scrub: 2
+            signUp.addEventListener("mouseleave", () => {
+                gsap.to(signUpspan, {
+                    y: "0%",
+                    duration: 0.3
+                })
+            })
         }
-    })
+
+        signUpbutton()
+
+    }
+
+    navButtonToggle()
+
+    function collectionButton() {
+
+        let colBtn = document.querySelector(".page1 .video-section .video-content .collection");
+        let colBtnspan = document.querySelectorAll(".page1 .video-section .video-content .collection h2 span");
+
+        colBtn.addEventListener("mouseenter", () => {
+            gsap.to(colBtnspan, {
+                y: "100%",
+                duration: 0.3
+            })
+        })
+
+        colBtn.addEventListener("mouseleave", () => {
+            gsap.to(colBtnspan, {
+                y: "0%",
+                duration: 0.3
+            })
+        })
+    }
+
+    collectionButton()
+
+    function footerButton() {
+
+        let footbtn = document.querySelector(".footer .footer-btn");
+        let footbtnspan = document.querySelectorAll(".footer .footer-btn .btn-text h3");
+
+        footbtn.addEventListener("mouseenter", () => {
+            gsap.to(footbtnspan, {
+                y: "100%",
+                duration: 0.3
+            })
+        })
+
+        footbtn.addEventListener("mouseleave", () => {
+            gsap.to(footbtnspan, {
+                y: "0%",
+                duration: 0.3
+            })
+        })
+    }
+
+    footerButton()
 }
 
-gsapanimation()
+someEventlistener()
 
-function textanimation() {
-    let tl = gsap.timeline();
+function gsapAnimation() {
 
-    tl.to(".page2 .title-section .learn h2 .trigger1", {
-        y: "-100%",
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: ".page2 .title-section .learn h2",
-            scroller: ".main",
-            scrub: 2,
-            start: "top 150%",
-            end: "top 120%"
-        }
-    })
+    function videoAnimation() {
 
-    tl.to(".page2 .title-section .learn h2 .trigger2", {
-        y: "-100%",
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: ".page2 .title-section .learn h2",
-            scroller: ".main",
-            scrub: 2,
-            start: "top 130%",
-            end: "top 100%"
-        }
-    })
+        let video = document.querySelector(".page1 .video-section .video");
+        let paraSpan = document.querySelectorAll(".page1 .video-section .video-content .video-text .para span");
 
-    tl.to(".page2 .title-section .learn h2 .trigger3", {
-        y: "-100%",
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: ".page2 .title-section .learn h2",
-            scroller: ".main",
-            scrub: 2,
-            start: "top 110%",
-            end: "top 180%"
-        }
-    })
+        gsap.to(video, {
+            y: 550,
+            x: -550,
+            duration: 2,
+            scale: 0.25,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: video,
+                scroller: ".main",
+                scrub: 2,
+                start: "top 70%",
+                end: "top 40%"
+            }
+        })
+
+        gsap.from(paraSpan, {
+            y: "100%",
+            duration: 0.3,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: paraSpan,
+                scroller: ".main",
+                scrub: 2,
+                start: "top 170%",
+                end: "top 140%"
+            }
+        })
+    }
+
+    videoAnimation()
+
+    function bubbleAnimation() {
+
+        const bubbles = gsap.utils.toArray(".bubble-section .bubble");
+
+        gsap.from(bubbles, {
+            y: "100%",
+            duration: 0.4,
+            ease: "power2.out",
+            stagger: {
+                from: "edges",
+                amount: 0.3
+            },
+            scrollTrigger: {
+                trigger: ".bubble-section",
+                scroller: ".main",
+                scrub: 1.5,
+                start: "top 180%",
+                end: "top 150%"
+            }
+        });
+
+    }
+
+    bubbleAnimation()
+
+    function TextRevealAnimation() {
+
+        let firstText = document.querySelectorAll(".page2 .anim-title .h2 .anime .first");
+        let secondText = document.querySelectorAll(".page2 .anim-title .h2 .anime .second");
+        let thirdText = document.querySelectorAll(".page2 .anim-title .h2 .anime .third");
+        let textAnime = document.querySelector(".page2 .anim-title")
+        let tl = gsap.timeline();
+
+        tl.from(firstText, {
+            y: "100%",
+            duration: 0.5,
+            ease: "power2.out",
+            stagger: 0.05,
+            scrollTrigger: {
+                trigger: textAnime,
+                scroller: ".main",
+                start: "top 160%",
+                end: "top 130%",
+                scrub: 2
+            }
+        })
+
+        tl.from(secondText, {
+            y: "100%",
+            duration: 0.5,
+            ease: "power2.out",
+            stagger: 0.05,
+            scrollTrigger: {
+                trigger: textAnime,
+                scroller: ".main",
+                start: "top 150%",
+                end: "top 120%",
+                scrub: 2
+            }
+        })
+
+        tl.from(thirdText, {
+            y: "100%",
+            duration: 0.5,
+            ease: "power2.out",
+            stagger: 0.05,
+            scrollTrigger: {
+                trigger: textAnime,
+                scroller: ".main",
+                start: "top 140%",
+                end: "top 110%",
+                scrub: 2
+            }
+        })
+    }
+
+    TextRevealAnimation()
+
+    function cardAnimation() {
+
+        let cards = document.querySelectorAll(".page2 .anime-cards .card");
+        let cardAnime = document.querySelector(".page2 .anime-cards");
+
+        gsap.from(cards, {
+            y: "100%",
+            duration: 0.5,
+            ease: "back.out(2)",
+            stagger: -0.1,
+            scrollTrigger: {
+                trigger: cardAnime,
+                scroller: ".main",
+                start: "top 170%",
+                end: "top 140%",
+                scrub: 2
+            }
+        })
+    }
+
+    cardAnimation()
+
+    function titleAnimation() {
+
+        let firstTrigger = document.querySelectorAll(".page2 .title-section .learn h2 .trigger1");
+        let secondTrigger = document.querySelectorAll(".page2 .title-section .learn h2 .trigger2");
+        let thirdTrigger = document.querySelectorAll(".page2 .title-section .learn h2 .trigger3");
+        let titleSection = document.querySelector(".page2 .title-section");
+
+        gsap.to(firstTrigger, {
+            y: "-100%",
+            duration: 0.5,
+            ease: "power2.out",
+            stagger: 0.02,
+            scrollTrigger: {
+                trigger: titleSection,
+                scroller: ".main",
+                start: "top 160%",
+                end: "top 130%",
+                scrub: 2
+            }
+        })
+
+        gsap.to(secondTrigger, {
+            y: "-100%",
+            duration: 0.5,
+            ease: "power2.out",
+            stagger: 0.02,
+            scrollTrigger: {
+                trigger: titleSection,
+                scroller: ".main",
+                start: "top 150%",
+                end: "top 120%",
+                scrub: 2
+            }
+        })
+
+        gsap.to(thirdTrigger, {
+            y: "-100%",
+            duration: 0.5,
+            ease: "power2.out",
+            stagger: 0.02,
+            scrollTrigger: {
+                trigger: titleSection,
+                scroller: ".main",
+                start: "top 140%",
+                end: "top 110%",
+                scrub: 2
+            }
+        })
+    }
+
+    titleAnimation()
+
+    function imageAnimation() {
+
+        let img1 = document.querySelector(".page2 .details .detail-section .detail1-section .detail-imgsection .img1");
+        let img2 = document.querySelector(".page2 .details .detail-section .detail1-section .detail-imgsection .img2");
+        let img3 = document.querySelector(".page2 .details .detail-section .detail1-section .detail-imgsection .img3");
+        let imgSection = document.querySelector(".page2 .details .detail-section .detail1-section .detail-imgsection");
+
+        gsap.to(img1, {
+            scale: 1.1,
+            duration: 0.5,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: imgSection,
+                scroller: ".main",
+                start: "top 170%",
+                end: "top 140%",
+                scrub: 2
+            }
+        })
+
+        gsap.to(img2, {
+            scale: 1.1,
+            duration: 0.5,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: imgSection,
+                scroller: ".main",
+                start: "top 150%",
+                end: "top 100%",
+                scrub: 2
+            }
+        })
+
+        gsap.to(img3, {
+            scale: 1.1,
+            duration: 0.5,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: imgSection,
+                scroller: ".main",
+                start: "top 130%",
+                end: "top 80%",
+                scrub: 2
+            }
+        })
+    }
+
+    imageAnimation()
+
+    function pinSection() {
+
+        let textAnimeSection = document.querySelector(".text-animesection");
+        let pinFirst = document.querySelectorAll(".text-animesection .anime-text h2 .pin-first");
+        let pinSecond = document.querySelectorAll(".text-animesection .anime-text h2 .pin-second");
+
+        gsap.from(pinFirst, {
+            y: "-250%",
+            duration: 0.6,
+            opacity: 0,
+            ease: "back.out(1.7)",
+            stagger: 0.05,
+            scrollTrigger: {
+                trigger: textAnimeSection,
+                scroller: ".main",
+                start: "top 130%",
+                end: "top 100%",
+                scrub: 2
+            }
+        })
+
+        gsap.from(pinSecond, {
+            y: "250%",
+            duration: 0.6,
+            opacity: 0,
+            ease: "back.out(1.7)",
+            stagger: 0.05,
+            scrollTrigger: {
+                trigger: textAnimeSection,
+                scroller: ".main",
+                start: "top 130%",
+                end: "top 100%",
+                scrub: 2
+            }
+        })
+    }
+
+    pinSection()
 }
 
-textanimation()
-
-function imganimation() {
-    let tl = gsap.timeline();
-
-    tl.to(".page2 .details .detail-section .detail1-section .detail-imgsection .img1", {
-        scale: 1.1,
-        duration: 0.6,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: ".page2 .details .detail-section .detail1-section .detail-imgsection",
-            scroller: ".main",
-            scrub: 2,
-            start: "top 160%",
-            end: "top 130%"
-        }
-    })
-
-    tl.to(".page2 .details .detail-section .detail1-section .detail-imgsection .img2", {
-        scale: 1,
-        duration: 0.6,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: ".page2 .details .detail-section .detail1-section .detail-imgsection",
-            scroller: ".main",
-            scrub: 2,
-            start: "top 130%",
-            end: "top 90%"
-        }
-    })
-
-    tl.to(".page2 .details .detail-section .detail1-section .detail-imgsection .img3", {
-        scale: 1,
-        duration: 0.6,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: ".page2 .details .detail-section .detail1-section .detail-imgsection",
-            scroller: ".main",
-            scrub: 2,
-            start: "top 100%",
-            end: "top 60%"
-        }
-    })
-}
-
-imganimation()
-
-function pinSectionAnimation() {
-    gsap.from(".text-animesection .anime-text h2 .pin-first", {
-        y: 450,
-        opacity: 0,
-        duration: 0.8,
-        stagger: -0.12,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-            trigger: ".text-animesection",
-            scroller: ".main",
-            scrub: 2,
-            start: "top 150%",
-            end: "top 100%"
-        }
-    })
-
-    gsap.from(".text-animesection .anime-text h2 .pin-second", {
-        y: -450,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.12,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-            trigger: ".text-animesection",
-            scroller: ".main",
-            scrub: 2,
-            start: "top 150%",
-            end: "top 100%"
-        }
-    })
-}
-
-pinSectionAnimation()
-
-function footerAnimation() {
-
-    gsap.from(".bubble2-animation .appear2-left", {
-        y: "100%",
-        stagger: 0.1,
-        duration: 0.5,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: ".bubble2-animation",
-            scroller: ".main",
-            scrub: 2,
-            start: "top 170%",
-            end: "top 140%"
-        }
-    })
-
-    gsap.from(".bubble2-animation .appear2-right", {
-        y: "100%",
-        stagger: -0.1,
-        duration: 0.5,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: ".bubble2-animation",
-            scroller: ".main",
-            scrub: 2,
-            start: "top 170%",
-            end: "top 140%"
-        }
-    })
-}
-
-footerAnimation()
-
-// function webtitleanimation() {
-
-//     let tl = gsap.timeline();
-
-//     tl.to(".footer .copyright-section .web-title .title-text h3 span .trigger-first", {
-//         y: "-100%",
-//         duration: 0.6,
-//         ease: "power2.out",
-//         scrollTrigger: {
-//             trigger: ".footer .copyright-section .web-title .title-text h3",
-//             scroller: ".main",
-//             scrub: 2,
-//             start: "top 150%",
-//             end: "top 120%"
-//         }
-//     })
-
-//     tl.to(".footer .copyright-section .web-title .title-text h3 span .trigger-second", {
-//         y: "-100%",
-//         duration: 0.6,
-//         ease: "power2.out",
-//         scrollTrigger: {
-//             trigger: ".footer .copyright-section .web-title .title-text h3",
-//             scroller: ".main",
-//             scrub: 2,
-//             start: "top 150%",
-//             end: "top 120%"
-//         }
-//     })
-
-//     tl.to(".footer .copyright-section .web-title .title-text h3 span .trigger-third", {
-//         y: "-100%",
-//         duration: 0.6,
-//         ease: "power2.out",
-//         scrollTrigger: {
-//             trigger: ".footer .copyright-section .web-title .title-text h3",
-//             scroller: ".main",
-//             scrub: 2,
-//             start: "top 150%",
-//             end: "top 120%"
-//         }
-//     })
-// }
-
-// webtitleanimation()
+gsapAnimation()
